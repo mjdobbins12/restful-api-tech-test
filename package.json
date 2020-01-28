@@ -2,7 +2,7 @@
   "name": "restful-api-tech-test",
   "version": "1.0.0",
   "description": "A simple RESTful API allowing a basket of items to be priced",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/mjdobbins12/restful-api-tech-test#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "jasmine": "^3.5.0"
   }

@@ -34,4 +34,9 @@ describe('BasketPricer', function() {
 	it('is denominated in USD unless otherwise specified', function() {
 		expect(bp.currency).toEqual("USD");	
 	});
+	
+	it('can be initialized with a different currency', function() {
+		bpSterling = new BasketPricer("GBP");
+		expect(bpSterling.currency).toEqual("GBP");
+	});
 });

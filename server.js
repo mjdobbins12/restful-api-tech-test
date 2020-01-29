@@ -13,10 +13,8 @@ app.get('/', (req, res) => {
 
 app.post('/', (req, res) => {
 	let items = req.body.items;
-	let currency = req.body.currency || "USD";
-	let currentBasket = new BasketPricer();
-	console.log(req.body);
-	console.log(currentBasket);
+	let currency = req.body.currency;
+	let currentBasket = new BasketPricer(currency);
 	currentBasket.addItems(items, prices);
 	res.send(currentBasket);
 });

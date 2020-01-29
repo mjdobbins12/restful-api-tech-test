@@ -25,4 +25,13 @@ describe('BasketPricer', function() {
 		bp.addItems(["Apples", "Apples"], priceList);
 		expect(bp.subtotal).toEqual(priceList["Apples"] * 2);
 	});
+	
+	it('only increases the subtotal if the item is listed', function() {
+		bp.addItems(["Apples", "Apples", "Quince"], priceList);
+		expect(bp.subtotal).toEqual(priceList["Apples"] * 2);
+	});
+	
+	it('is denominated in USD unless otherwise specified', function() {
+		expect(bp.currency).toEqual("USD");	
+	});
 });

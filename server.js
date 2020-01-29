@@ -1,5 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const BasketPricer = require('./lib/basketPricer');
+const prices = require('./prices')
 const app = express();
 
 app.use(bodyParser.json());
@@ -11,9 +13,12 @@ app.get('/', (req, res) => {
 
 app.post('/', (req, res) => {
 	let items = req.body.items;
-	let currency = req.body.currency;
+	let currency = req.body.currency || "USD";
+	let currentBasket = new BasketPricer();
 	console.log(req.body);
-	res.send(`${items}: ${currency}`);	
+	console.log(currentBasket);
+	currentBasket.addItems(items, prices);
+	res.send(currentBasket);
 });
 
 const port = process.env.PORT || 8080;

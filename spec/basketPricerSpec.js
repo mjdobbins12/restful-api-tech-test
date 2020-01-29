@@ -39,4 +39,10 @@ describe('BasketPricer', function() {
 		bpSterling = new BasketPricer("GBP");
 		expect(bpSterling.currency).toEqual("GBP");
 	});
+	
+	it('applies the current discount on apples', function() {
+		bp.addItems(["Apples", "Apples", "Apples"], priceList);
+		expect(bp.subtotal).toEqual(300);
+		expect(bp.total).toEqual(270);
+	});
 });

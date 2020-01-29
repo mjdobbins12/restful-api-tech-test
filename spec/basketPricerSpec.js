@@ -20,4 +20,9 @@ describe('BasketPricer', function() {
 		bp.addItems(["Apples", "Milk"], priceList);
 		expect(bp.subtotal).toEqual(priceList["Apples"] + priceList["Milk"]);
 	});
+	
+	it('increments the subtotal when two identical items are added', function() {
+		bp.addItems(["Apples", "Apples"], priceList);
+		expect(bp.subtotal).toEqual(priceList["Apples"] * 2);
+	});
 });

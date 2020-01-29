@@ -7,4 +7,4 @@ const priceList = {
 	"Apples": 100
 };
 
-modules.exports = priceList;
+module.exports = priceList;

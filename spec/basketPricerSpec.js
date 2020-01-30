@@ -45,4 +45,10 @@ describe('BasketPricer', function() {
 		expect(bp.subtotal).toEqual(300);
 		expect(bp.total).toEqual(270);
 	});
+	
+	it('applies the apple discount only to apples', function() {
+		bp.addItems(["Apples", "Apples", "Apples", "Soup"], priceList);
+		expect(bp.subtotal).toEqual(365);
+		expect(bp.total).toEqual(335);
+	});
 });

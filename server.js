@@ -15,7 +15,11 @@ app.post('/', (req, res) => {
 	let items = req.body.items;
 	let currency = req.body.currency;
 	let currentBasket = new BasketPricer(currency);
-	currentBasket.addItems(items, prices);
+	currentBasket.findTotal(items, prices);
+	if (currentBasket.currency != "USD") {
+		currentBasket.convertCurrency();
+		console.log(currentBasket);
+	}
 	res.send(currentBasket);
 });
 

@@ -51,4 +51,22 @@ describe('BasketPricer', function() {
 		expect(bp.subtotal).toEqual(365);
 		expect(bp.total).toEqual(335);
 	});
+	
+	it('applies the current discount on 3 or more units of milk', function() {
+		bp.addItems(["Milk", "Milk", "Milk"], priceList);
+		expect(bp.subtotal).toEqual(345);
+		expect(bp.total).toEqual(295);
+	});
+	
+	it('does not apply the milk discount to 2 units', function() {
+		bp.addItems(["Milk", "Milk"], priceList);
+		expect(bp.subtotal).toEqual(230);
+		expect(bp.total).toEqual(230);
+	});
+	
+	it('can apply both apple and milk discounts in the same purchase', function() {
+		bp.addItems(["Milk", "Milk", "Milk", "Apples"], priceList);
+		expect(bp.subtotal).toEqual(445);
+		expect(bp.total).toEqual(385);
+	});
 });

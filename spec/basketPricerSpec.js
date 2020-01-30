@@ -69,4 +69,13 @@ describe('BasketPricer', function() {
 		expect(bp.subtotal).toEqual(445);
 		expect(bp.total).toEqual(385);
 	});
+	
+	it('has no discounts listed if none are applied', function() {
+		expect(bp.discounts).toEqual([]);	
+	});
+	
+	it('lists applied discounts', function() {
+		bp.addItems(["Milk", "Milk", "Milk", "Apples"], priceList);
+		expect(bp.discounts).toEqual(["Apples 10% off", "Milk 50 cents off"]);
+	});
 });

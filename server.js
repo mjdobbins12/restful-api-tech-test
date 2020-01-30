@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const BasketPricer = require('./lib/basketPricer');
-const prices = require('./prices')
+const prices = require('./prices');
 const app = express();
 
 app.use(bodyParser.json());

@@ -16,10 +16,6 @@ app.post('/', (req, res) => {
 	let currency = req.body.currency;
 	let currentBasket = new BasketPricer(currency);
 	currentBasket.findTotal(items, prices);
-	if (currentBasket.currency != "USD") {
-		currentBasket.convertCurrency();
-		console.log(currentBasket);
-	}
 	res.send(currentBasket);
 });
 

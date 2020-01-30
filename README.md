@@ -4,6 +4,8 @@
 
 This API accepts a JSON input containing an array of items and an optional currency, and returns a JSON output containing the basket subtotal, discount information, total, and currency. The overall design is motivated by adaptability and extensibility: I would like it to be as easy as possible for hypothetical future users to add new features, update prices, and apply or unapply future discounts.
 
+## Testing
+
 I used the Jasmine testing framework for unit testing, and Postman to test calling the API with various payloads.
 
 ## A few words on my process

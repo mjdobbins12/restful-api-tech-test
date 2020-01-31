@@ -1,14 +1,14 @@
 # RESTful API coding assignment
 
-## Overview
+## Object-Oriented Design
 
-This API accepts a JSON input containing an array of items and an optional currency, and returns a JSON output containing the basket subtotal, discount information, total, and currency. The overall design is motivated by adaptability and extensibility: I would like it to be as easy as possible for hypothetical future users to add new features, update prices, and apply or unapply future discounts.
+I have sought to give each class a single responsibility - the BasketPricer class prices a basket of items, and the CurrencyConverter gives an up-to-rate exchange rate. An Item class would allow for expanded functionality in the future: for example, a product search feature that finds items with a category property set to "fruit", then passes those items to the pricer API. As it stands, given that each item currently only has a single property (price), I opted for a single price object in the interests of time.
 
-## Testing
+#### Testing
 
 I used the Jasmine testing framework for unit testing, and Postman to test calling the API with various payloads.
 
-## A few words on my process
+#### A few words on my process
 
 1. The BasketPricer's addItems function takes the list of prices as an argument in order to make it simpler to update and customise prices as needed. There could be different prices in various regions, discounts for customers subscribing to a premium service, or what have you.
 

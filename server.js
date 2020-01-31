@@ -16,13 +16,16 @@ app.post('/', async (req, res) => {
 	let currency = req.body.currency;
 	let currentBasket = new BasketPricer(currency);
 	let converter = new CurrencyConverter();
+	if (items == null) {
+		res.status(404).send("No items found to price. Check your request and try again");
+	}
 	currentBasket.findTotal(items, prices);
 	(async () => {
 	  try {
 	    let x = await converter.applyExchangeRate(currentBasket);
-		res.send(x);
+		res.status(200).send(x);
 	  } catch(err) {
-	    res.send("Currency conversion unavailable - try again using GBP or EUR");
+	    res.status(404).send("Currency conversion unavailable - try again using GBP or EUR");
 	  }
 	})();
 });

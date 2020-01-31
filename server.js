@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const BasketPricer = require('./lib/basketPricer');
+const CurrencyConverter = require('./lib/currencyConverter');
 const prices = require('./prices');
 const app = express();
 
@@ -15,8 +16,10 @@ app.post('/', async (req, res) => {
 	let items = req.body.items;
 	let currency = req.body.currency;
 	let currentBasket = new BasketPricer(currency);
+	let converter = new CurrencyConverter();
 	currentBasket.findTotal(items, prices);
-	let x = await currentBasket.convertCurrency();
+	// let x = await currentBasket.convertCurrency();
+	let x = await converter.applyExchangeRate(currentBasket);
 	res.send(x);
 });
 

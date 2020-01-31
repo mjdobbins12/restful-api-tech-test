@@ -17,7 +17,7 @@ app.post('/', async (req, res) => {
 	let currentBasket = new BasketPricer(currency);
 	let converter = new CurrencyConverter();
 	if (items == null) {
-		res.status(404).send("No items found to price. Check your request and try again");
+		res.status(400).send("No items found to price. Check your request and try again");
 	}
 	currentBasket.findTotal(items, prices);
 	(async () => {

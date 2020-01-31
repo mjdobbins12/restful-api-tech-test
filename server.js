@@ -17,9 +17,14 @@ app.post('/', async (req, res) => {
 	let currentBasket = new BasketPricer(currency);
 	let converter = new CurrencyConverter();
 	currentBasket.findTotal(items, prices);
-	// let x = await currentBasket.convertCurrency();
-	let x = await converter.applyExchangeRate(currentBasket);
-	res.send(x);
+	(async () => {
+	  try {
+	    let x = await converter.applyExchangeRate(currentBasket);
+		res.send(x);
+	  } catch(err) {
+	    res.send("Currency conversion unavailable - try again using GBP or EUR");
+	  }
+	})();
 });
 
 const port = process.env.PORT || 8080;

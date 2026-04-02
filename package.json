@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/mjdobbins12/restful-api-tech-test#readme",
   "dependencies": {
-    "express": "^4.21.2",
+    "express": "^4.22.1",
     "body-parser": "^1.20.3",
     "jasmine": "^3.5.0",
     "request": "^2.88.0"
